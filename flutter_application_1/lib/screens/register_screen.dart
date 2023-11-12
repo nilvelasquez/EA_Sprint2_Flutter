@@ -13,11 +13,13 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _verifyPasswordController =
+      TextEditingController();
 
   // La URL de tu backend
-  final String apiUrl = 'https://localhost:27017/usuario/register';
+  final String apiUrl = 'http://localhost:9090/users';
 
   // Método para realizar la solicitud de registro al backend
   Future<void> _registerUser() async {
@@ -25,8 +27,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
       final response = await http.post(
         Uri.parse(apiUrl),
         body: {
+          'name': _nameController.text,
           'email': _emailController.text,
-          'username': _usernameController.text,
           'password': _passwordController.text,
         },
       );
@@ -71,8 +73,28 @@ class _RegisterScreenState extends State<RegisterScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // ... Campos de entrada de usuario, correo y contraseña
-
+            TextField(
+              controller: _nameController,
+              decoration: const InputDecoration(labelText: 'Usuario'),
+            ),
+            TextField(
+              controller: _emailController,
+              keyboardType: TextInputType.emailAddress,
+              decoration: const InputDecoration(labelText: 'Correo'),
+            ),
+            const SizedBox(height: 20),
+            TextField(
+              controller: _passwordController,
+              obscureText: true,
+              decoration: const InputDecoration(labelText: 'Contraseña'),
+            ),
+            const SizedBox(height: 20),
+            TextField(
+              controller: _verifyPasswordController,
+              obscureText: true,
+              decoration:
+                  const InputDecoration(labelText: 'Verificar Contraseña'),
+            ),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: _registerUser,
