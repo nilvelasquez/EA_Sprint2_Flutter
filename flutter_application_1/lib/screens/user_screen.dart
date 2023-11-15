@@ -4,9 +4,8 @@ import 'package:flutter/material.dart';
 
 class UserScreen extends StatelessWidget {
   final String username;
-  final String email;
 
-  UserScreen({required this.username, required this.email});
+  UserScreen({required this.username});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +16,6 @@ class UserScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('Usuario: $username'),
-            Text('Correo: $email'),
           ],
         ),
       ),
