@@ -27,13 +27,13 @@ class _LoginScreenState extends State<LoginScreen> {
       final response = await http.post(
         Uri.parse(apiUrl),
         body: {
-          'username': _usernameController.text,
+          'name': _usernameController.text,
           'password': _passwordController.text,
         },
       );
 
       // Verifica si la solicitud fue exitosa (código 201)
-      if (response.statusCode == 201) {
+      if (response.statusCode == 200) {
         final Map<String, dynamic> responseData = json.decode(response.body);
         final String token = responseData['token'];
         SharedPreferences prefs = await SharedPreferences.getInstance();
