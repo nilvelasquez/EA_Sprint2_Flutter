@@ -19,6 +19,14 @@ class _RegisterFormState extends State<RegisterForm> {
 
   // Método para realizar la solicitud de registro al backend
   Future<void> _registerUser() async {
+    if (_passwordController.text != _verifyPasswordController.text) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Las contraseñas no coinciden'),
+        ),
+      );
+      return;
+    }
     try {
       final response = await http.post(
         Uri.parse(apiUrl),
