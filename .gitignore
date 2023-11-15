@@ -44,3 +44,5 @@ app.*.map.json
 /android/app/release
 flutter_application_1/.dart_tool/package_config_subset
 flutter_application_1/.dart_tool/package_config.json
+flutter_application_1/.dart_tool/package_config.json
+flutter_application_1/.dart_tool/package_config_subset
