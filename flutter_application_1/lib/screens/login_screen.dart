@@ -28,8 +28,8 @@ class _LoginScreenState extends State<LoginScreen> {
         },
       );
 
-      // Verifica si la solicitud fue exitosa (código 200)
-      if (response.statusCode == 200) {
+      // Verifica si la solicitud fue exitosa (código 201)
+      if (response.statusCode == 201) {
         // Inicio de sesión exitoso, redirige a la pantalla de usuario
         // ignore: use_build_context_synchronously
         Navigator.pushReplacement(
